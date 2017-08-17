@@ -1,0 +1,152 @@
+@import 'base/base';
+@import 'includes/nav';
+@import 'includes/footer';
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    margin: 0;
+    font-family: 'calibri';
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    
+    .header {
+        background-color: indianred;
+        height: 200px;
+        padding: 5px;
+        
+        &-left {
+            flex: 1;
+            background-color: white;
+            margin-right: 5px;
+            
+            .row:last-child {
+                flex: 2;
+            }
+        }
+        
+        &-right {
+            flex: 2;
+            background-color: darkgrey;
+            
+            &-west,&-east {
+                flex: 1;                
+            }
+            
+            &-east {
+                input[type="date"] {
+                    font: inherit;
+                }
+            }
+        }
+        
+        .row {
+            margin: 10px;
+            flex: 1;
+
+            .label {
+                flex: 1;
+//                    background-color: gainsboro;
+            }
+
+            .input {
+                flex: 3;
+//                    background-color: grey;
+
+                select, input {
+                    width: 100%;
+                    margin-bottom: 0;
+                    padding: 5px;
+                    border-radius: 5px;
+                    border: 1px solid gainsboro;
+                }
+
+                textarea {
+                    resize: none;
+                    width: 100%;
+                    height: 100%;
+                    padding: 10px;
+                    box-sizing: border-box;
+                    font: inherit;
+                    border-radius: 5px;
+                    border: 1px solid gainsboro;
+                }
+            }
+        }
+    }
+    
+    .content {
+        background-color: darkseagreen;
+        flex: 1;
+        
+        ul {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding-left: 0;
+            
+            .item-header {
+                span {
+                    font-size: 15pt;
+                    font-weight: bold;
+                }
+            }
+            
+            span {
+                padding: 10px;
+                text-align: center;
+                background-color: white;
+                border: 1px solid gainsboro;
+                box-sizing: border-box;
+
+                &:nth-child(1) {
+                    flex: 1;
+                }
+                &:nth-child(2) {
+                    flex: 3;
+                }
+                &:nth-child(3),
+                &:nth-child(4),
+                &:nth-child(5) {
+                    flex: 2;
+                }
+                
+                textarea {
+                    resize: none;
+                    font: inherit;
+                }
+                input, textarea {
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    text-align: center;
+                }
+
+            }
+        }
+    }
+    .footer {
+        background-color: dodgerblue;
+        height: 200px;
+    }
+}
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
