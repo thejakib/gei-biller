@@ -15,14 +15,11 @@ body {
     height: 100%;
     
     .header {
-        background-color: indianred;
         height: 200px;
-        padding: 5px;
         
         &-left {
             flex: 1;
             background-color: white;
-            margin-right: 5px;
             
             .row:last-child {
                 flex: 2;
@@ -31,7 +28,7 @@ body {
         
         &-right {
             flex: 2;
-            background-color: darkgrey;
+            background-color: gainsboro;
             
             &-west,&-east {
                 flex: 1;                
@@ -50,6 +47,7 @@ body {
 
             .label {
                 flex: 1;
+                font-weight: bold;
 //                    background-color: gainsboro;
             }
 
@@ -80,18 +78,17 @@ body {
     }
     
     .content {
-        background-color: darkseagreen;
         flex: 1;
+        overflow: auto;
         
         ul {
             width: 100%;
-            height: 100%;
             margin: 0;
             padding-left: 0;
+            background-color: gainsboro;
             
             .item-header {
                 span {
-                    font-size: 15pt;
                     font-weight: bold;
                 }
             }
@@ -99,8 +96,8 @@ body {
             span {
                 padding: 10px;
                 text-align: center;
-                background-color: white;
-                border: 1px solid gainsboro;
+                background-color: gainsboro;
+                border: 1px solid white;
                 box-sizing: border-box;
 
                 &:nth-child(1) {
@@ -121,7 +118,6 @@ body {
                 }
                 input, textarea {
                     width: 100%;
-                    height: 100%;
                     box-sizing: border-box;
                     text-align: center;
                 }
@@ -129,9 +125,28 @@ body {
             }
         }
     }
+    
     .footer {
         background-color: dodgerblue;
-        height: 200px;
+        padding: 40px;
+        
+        .save-btn {
+            border: 0;
+            border-radius: 5px;
+            padding: 10px;
+            font-weight: bold;
+            background-color: white; 
+            color: dodgerblue;
+            width: 25%;
+            transition: all 0.3s;
+            letter-spacing: 0.5em;
+            cursor: pointer;
+            font-size: 12pt;
+            
+            &:hover {
+                background-color: gainsboro;
+            }
+        }
     }
 }
 

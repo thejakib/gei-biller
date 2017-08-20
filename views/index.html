@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="../dist/css/style.css">
 </head>
 
-<body >
+<body ng-controller="app-controller">
 
     <div class="container flex-column">
-        <div class="header flex-row">
+        <div class="header flex-row" >
             <div class="header-left flex-column">
                 <div class="row flex-row">
                     <div class="label vertical-center">
@@ -110,37 +110,36 @@
                     <span>Rate (₹)</span>
                     <span>Amount</span>
                 </li>
+                <li class="item flex-row" ng-repeat="item in items track by $index">
+                    <span class="vertical-center">{{$index+1}}</span>
+                    <span class="vertical-center"> <textarea ng-model="item.desc" rows="1"></textarea> </span>
+                    <span class="vertical-center"> <input type="number" ng-model="item.qty"/></span>
+                    <span class="vertical-center"> <input type="number" ng-model="item.rate"/> </span>
+                    <span class="vertical-center">{{item.qty * item.rate}}</span>
+                </li>
                 <li class="item flex-row">
                     <span class="vertical-center">{{items.length+1}}</span>
-                    <span class="vertical-center"> <textarea placeholder="Describe the product..."></textarea> </span>
-                    <span class="vertical-center"> <input type="number" value="0" ng-model="qty" /></span>
-                    <span class="vertical-center"> <input type="number" value="0" ng-model="rate"/> </span>
-                    <span class="vertical-center">{{qty*rate}}</span>
+                    <span class="vertical-center"> <textarea placeholder="Describe the product..." class="mousetrap" ng-model="desc" rows="1" msd-elastic></textarea> </span>
+                    <span class="vertical-center"> <input type="number" value="0" class="mousetrap" ng-model="qty"/></span>
+                    <span class="vertical-center"> <input type="number" value="0" class="mousetrap" ng-model="rate"/> </span>
+                    <span class="vertical-center">{{qty * rate}}</span>
                 </li>
-                <!--<li class="item flex-row" ng-repeat="item in items track by $index">
-                    <span class="vertical-center">{{$index+1}}</span>
-                    <span class="vertical-center"> <textarea>{{item.desc}}</textarea> </span>
-                    <span class="vertical-center"> <input type="number" value="{{item.qty}}"/></span>
-                    <span class="vertical-center"> <input type="number" value="{{item.rate}}"/> </span>
-                    <span class="vertical-center">{{qty*rate}}</span>
-                </li>-->
                 
             </ul>
         </div>
 
-        <div class="footer">
+        <div class="footer vertical-center">
+            <button class="save-btn" ng-click="save()">SAVE</button>
         </div>
+        
     </div>
 
     <!-- bower:js -->
     <script src="../dist/vendor/angular/angular.js"></script>
     <script src="../dist/vendor/angular-mocks/angular-mocks.js"></script>
+    <script src="../dist/vendor/angular-elastic/elastic.js"></script>
     <!-- endbower -->
     <script src="../dist/app/home/home.js"></script>
-    <script>
-        var electron = require('electron');
-        console.log(electron);        
-    </script>
 </body>
 
 </html>
