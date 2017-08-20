@@ -1,6 +1,6 @@
 const Mousetrap = require('mousetrap');
-//const Excel = require('exceljs');
-const XLSX = require('xlsx');
+const Excel = require('exceljs');
+//const XLSX = require('xlsx');
 
 angular.module('geibiller', ['monospaced.elastic'])
     .controller('items-controller', ['$scope', itemsController])
@@ -32,26 +32,37 @@ function itemsController($scope) {
 
 
 function appController($scope) {
-    var saveFilename = "./output.xlsx";
-
     $scope.save = function () {
-        var templateFilename = "dist/res/bill-template.xlsx";
-        var readOptions = {
-            raw: true,
-            cellStyles: true
-        };
-        var workbook = XLSX.readFile(templateFilename, readOptions);
-        readWorkbook(workbook);
+        app.startSave();
     }
 
-    function readWorkbook(workbook) {
-        var firstSheetName = workbook.SheetNames[0],
-            worksheet = workbook.Sheets[firstSheetName];
-        
-        worksheet['C12'] = {
-            v: 'Zen Enterprise'
+    var app = {
+        filename: {
+            template: "dist/res/bill-template.xlsx",
+            save: "./output.xlsx",
+        },
+        workbook: null,
+
+        writeFile: () => {
+            app.workbook.xlsx
+                .writeFile(app.filename.save)
+                .then(() => console.log("file saved", app.filename.save));
+        },
+        processFile: () => {
+            var worksheet = app.workbook.getWorksheet(1);
+
+            var clientNameCell = worksheet.getCell('C13');
+            clientNameCell.value = 'Zen Enterprise';
+        },
+        readFile: () => {
+            app.workbook = new Excel.Workbook();
+            return app.workbook.xlsx
+                .readFile(app.filename.template)
+        },
+        startSave: () => {
+            app.readFile()
+                .then(app.processFile)
+                .then(app.writeFile);
         }
-        
-        XLSX.writeFile(workbook, saveFilename);
     }
 }

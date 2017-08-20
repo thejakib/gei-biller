@@ -8,7 +8,7 @@
   "main": "main.js",
   "scripts": {
     "start": "start gulp && electron .",
-    "postinstall": "node_modules\\bower\\bin\\bower install && node_modules\\jspm\\jspm.js install",
+    "postinstall": "bower install",
     "debug": "node-inspector && electron --debug=5858 && ",
     "test": "./node_modules/jest-cli/bin/jest.js --verbose && ./node_modules/karma/bin/karma start",
     "test-angularjs": "karma start --auto-watch"
