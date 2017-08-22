@@ -48,6 +48,11 @@ body {
             .label {
                 flex: 1;
                 font-weight: bold;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                justify-content: flex-start;
+                display:inline-block;
 //                    background-color: gainsboro;
             }
 

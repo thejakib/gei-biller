@@ -17,11 +17,18 @@
                         Company
                     </div>
                     <div class="input vertical-center">
-                        <select>
-                          <option value="volvo">Euro Enterprise</option>
-                          <option value="saab">Zen Enterprise</option>
-                          <option value="opel">Global Exporters &amp; Importers</option>
+                        <select ng-model="selectedCompany"
+                                ng-options="company.name for company in companies">
                         </select>
+                    </div>
+                </div>
+                <div class="row flex-row">
+                    <div class="label vertical-center">
+                        Company GST IN
+                    </div>
+                    <div class="input vertical-center">
+                        <input type="text" value="" disabled
+                               ng-model="selectedCompany.gst"/>
                     </div>
                 </div>
                 <div class="row flex-row">
@@ -29,7 +36,9 @@
                         Client
                     </div>
                     <div class="input vertical-center">
-                        <input type="text" name="client" value="" />
+                        <input type="text"
+                               ng-model="clientName"
+                               auto-complete="autoCompleteOptions"/>
                     </div>
                 </div>
                 <div class="row flex-row">
@@ -68,6 +77,14 @@
                             <input type="text" name="client" value="" />
                         </div>
                     </div>
+                    <div class="row flex-row">
+                        <div class="label vertical-center">
+                            GST IN
+                        </div>
+                        <div class="input vertical-center">
+                            <input type="text" name="client" value="" />
+                        </div>
+                    </div>
                 </div>
 
                 <div class="header-right-east flex-column">
@@ -95,6 +112,8 @@
                         <div class="input vertical-center">
                             <input type="text" name="client" value="" />
                         </div>
+                    </div>
+                    <div class="row flex-row">
                     </div>
                 </div>
 
@@ -136,9 +155,11 @@
 
     <!-- bower:js -->
     <script src="../dist/vendor/angular/angular.js"></script>
-    <script src="../dist/vendor/angular-mocks/angular-mocks.js"></script>
     <script src="../dist/vendor/angular-elastic/elastic.js"></script>
+    <script src="../dist/vendor/angular-auto-complete/angular-auto-complete.js"></script>
+    <script src="../dist/vendor/angular-sanitize/angular-sanitize.js"></script>
     <!-- endbower -->
+    <script src="../dist/app/settings.js"></script>
     <script src="../dist/app/home/home.js"></script>
 </body>
 

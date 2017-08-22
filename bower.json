@@ -21,8 +21,8 @@
   ],
   "dependencies": {
     "angular": "1.4.9",
-    "skeleton": "2.0.4",
-    "angular-mocks": "1.4.9",
-    "angular-elastic": "^2.5.1"
+    "angular-elastic": "^2.5.1",
+    "angular-auto-complete": "^1.4.2",
+    "angular-sanitize": "^1.6.6"
   }
 }

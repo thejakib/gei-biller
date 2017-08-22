@@ -60,6 +60,7 @@
     "wiredep": "4.0.0"
   },
   "dependencies": {
+    "electron-settings": "^3.1.1",
     "exceljs": "^0.5.1",
     "jquery": "^3.1.0",
     "mousetrap": "^1.6.1",

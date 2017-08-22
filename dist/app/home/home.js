@@ -2,7 +2,7 @@ const Mousetrap = require('mousetrap');
 const Excel = require('exceljs');
 //const XLSX = require('xlsx');
 
-angular.module('geibiller', ['monospaced.elastic'])
+angular.module('geibiller', ['monospaced.elastic', 'autoCompleteModule'])
     .controller('items-controller', ['$scope', itemsController])
     .controller('app-controller', appController);
 
@@ -32,8 +32,27 @@ function itemsController($scope) {
 
 
 function appController($scope) {
+    let selectedCompanyIndex = appSettings.get('selectedCompanyIndex');
+    $scope.companies = appSettings.get('companies');
+    $scope.selectedCompany = $scope.companies[selectedCompanyIndex];
+    $scope.clients = appSettings.get('clients');
+    $scope.clientName = null;
+
+    $scope.autoCompleteOptions = {
+        minimumChars: 1,
+        data: function (term) {
+            term = term.toLowerCase();
+            let matches = $scope.clients.filter((client) => {
+                return client.name.toLowerCase().startsWith(term);
+            });
+            let clientNames = matches.map((match) => match.name);
+            console.log(clientNames);
+            return clientNames;
+        }
+    }
+
     $scope.save = function () {
-        app.startSave();
+        //        app.startSave();
     }
 
     var app = {
