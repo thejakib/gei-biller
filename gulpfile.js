@@ -5,14 +5,14 @@ const gulp = require('gulp');
 const gutil = require('gulp-util');
 const gulpLoadPlugins = require('gulp-load-plugins');
 
-let wiredep = require('wiredep').stream;
+const wiredep = require('gulp-wiredep')
 
 const plugins = gulpLoadPlugins();
 const sassRoot = 'src/scss';
-const cssRoot = 'dist/css';
+const cssRoot = 'src/css';
 
-const views = 'views/**/*.html';
-const viewsRoot = 'views/';
+const views = 'src/views/**/*.html';
+const viewsRoot = 'src/views/';
 
 function handleError(err) {
   console.log(err.toString());
@@ -27,7 +27,7 @@ gulp.task('clean:styles', (cb) => {
   ], cb);
 });
 
-gulp.task('inject-dependencies', function() {
+gulp.task('bower', function() {
   return gulp.src(views)
     .pipe(wiredep())
     .pipe(plugins.rename(function(path) {
@@ -60,9 +60,9 @@ gulp.task('watch-sass', () => {
 // ############################################################################################
 // ############################################################################################
 
-gulp.task('default', ['build-sass', 'inject-dependencies', 'watch-sass'], () => {
+gulp.task('default', ['build-sass', 'bower', 'watch-sass'], () => {
   gutil.log('Transposing Sass...');
 });
 
-gulp.task('clean', ['clean:styles']);
-gulp.task('watch', ['watch-sass']);
+//gulp.task('clean', ['clean:styles']);
+//gulp.task('watch', ['watch-sass']);

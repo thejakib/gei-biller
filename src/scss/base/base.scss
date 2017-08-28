@@ -3,3 +3,33 @@
 @import 'colors';
 @import 'fonts';
 @import 'icons';
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    margin: 0;
+    font-family: 'Arial';
+    font-size: 10pt;
+}
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}

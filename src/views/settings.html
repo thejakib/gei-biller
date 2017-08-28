@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- when using the mode "code", it's important to specify charset utf-8 -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+    <link href="../vendor/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+    <script src="../vendor/jsoneditor/dist/jsoneditor.min.js"></script>
+    <title>Settings</title>
+
+    <link rel="stylesheet" href="../css/style.css"/>
+    <style type="text/css">
+        #jsoneditor {
+            width: 100% !important;
+            flex: 1;
+        }
+        
+        button {
+            width: 100%;
+            padding: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="flex-column">
+    <div id="jsoneditor" style="width: 400px; height: 400px;"></div>
+    <div class="footer">
+        <button onclick="saveSettings()">SAVE SETTINGS</button>
+    </div>
+    
+
+    <script src="../js/settings.js"></script>
+    <script>
+        // create the editor
+        var container = document.getElementById("jsoneditor");
+        var options = {
+            mode: 'code',
+            modes: ['code', 'tree', 'view'],
+        };
+        var editor = new JSONEditor(container, options);
+        editor.set(appSettings.getAll());
+        
+        function saveSettings() {
+            appSettings.setAll(editor.get());
+            window.close();
+        }
+        
+    </script>
+</body>
+
+</html>

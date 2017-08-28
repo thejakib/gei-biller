@@ -1,14 +1,6 @@
 @import 'base/base';
 @import 'includes/nav';
 @import 'includes/footer';
-html,
-body {
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    margin: 0;
-    font-family: 'calibri';
-}
 
 .container {
     width: 100%;
@@ -28,7 +20,8 @@ body {
         
         &-right {
             flex: 2;
-            background-color: gainsboro;
+            border-left: 2px solid gainsboro;
+            background-color: whitesmoke;
             
             &-west,&-east {
                 flex: 1;                
@@ -52,7 +45,6 @@ body {
                 overflow: hidden;
                 white-space: nowrap;
                 justify-content: flex-start;
-                display:inline-block;
 //                    background-color: gainsboro;
             }
 
@@ -60,19 +52,32 @@ body {
                 flex: 3;
 //                    background-color: grey;
 
-                select, input {
+                select,
+                input {
                     width: 100%;
                     margin-bottom: 0;
                     padding: 5px;
                     border-radius: 5px;
                     border: 1px solid gainsboro;
                 }
+                
+                &.editable-select {
+                    position: relative;
+                    input {
+                        position: absolute;
+                        left: 0;
+                        width: calc(100% - 20px);
+                        border: 0;
+                        outline: none;
+                        margin: 1px;
+                    }
+                }
 
                 textarea {
                     resize: none;
                     width: 100%;
                     height: 100%;
-                    padding: 10px;
+                    padding: 5px;
                     box-sizing: border-box;
                     font: inherit;
                     border-radius: 5px;
@@ -86,23 +91,40 @@ body {
         flex: 1;
         overflow: auto;
         
-        ul {
+        &-top {
+            overflow: auto;
+            flex: 1;
             width: 100%;
             margin: 0;
             padding-left: 0;
-            background-color: gainsboro;
+            background-color: white;
             
             .item-header {
                 span {
                     font-weight: bold;
                 }
+                border: 2px solid gainsboro;
+                border-width: 2px 0px;
             }
+            
+            .item.new {
+                background-color: whitesmoke;
+                /** {
+                    color: gray;
+                }*/
+            }
+            
+            /*.item {
+                background-color: gainsboro;
+                
+                &:nth-child(2n) {
+                    background-color: white;
+                }
+            }*/
             
             span {
                 padding: 10px;
                 text-align: center;
-                background-color: gainsboro;
-                border: 1px solid white;
                 box-sizing: border-box;
 
                 &:nth-child(1) {
@@ -125,48 +147,71 @@ body {
                     width: 100%;
                     box-sizing: border-box;
                     text-align: center;
+                    border: 0;
                 }
-
+            }
+        }
+        
+        &-bottom {
+            border-top: 2px solid gainsboro;
+            
+            > div {
+                &:not(:first-child) {
+                    border-top: 1px solid gainsboro;
+                }
+                
+                
+                /*background-color: whitesmoke;
+                &:nth-child(2n) {
+                    background-color: gainsboro;
+                }*/
+                
+                > span {
+                    font-size: 10pt;
+                    padding: 5px;
+                    
+                    &.label {
+                        flex: 8;
+                        text-align: right;
+                        font-weight: bold;
+                        border-right: 1px solid gainsboro;
+                    }
+                    
+                    &.value {
+                        flex: 2;
+                        text-align: right;
+                    }
+                }
             }
         }
     }
     
     .footer {
-        background-color: dodgerblue;
-        padding: 40px;
+        padding: 25px;
+        border-top: 2px solid gainsboro;
+        background-color: whitesmoke;
+        justify-content: space-around;
         
-        .save-btn {
+        .btn {
             border: 0;
             border-radius: 5px;
             padding: 10px;
             font-weight: bold;
-            background-color: white; 
-            color: dodgerblue;
-            width: 25%;
-            transition: all 0.3s;
-            letter-spacing: 0.5em;
+            transition: all 0.25s;
             cursor: pointer;
-            font-size: 12pt;
-            
+            font-size: 11pt;
+            width: 25%;
+            background-color: gainsboro;
+            color: black;
+
             &:hover {
-                background-color: gainsboro;
+                background-color: dodgerblue;
             }
         }
     }
 }
 
-.vertical-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.flex-row {
-    display: flex;
-    flex-direction: row;
-}
-
-.flex-column {
-    display: flex;
-    flex-direction: column;
+/* INPUT DROP DOWN */
+.input-dropdown ul > li.active {
+  background-color: gainsboro;
 }
