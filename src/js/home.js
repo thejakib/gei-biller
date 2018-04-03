@@ -149,10 +149,14 @@ function appController($scope) {
                 }
             });
         },
+        updateCellFormula: (cell) => {
+            cell.value = Object.assign(cell.value, {
+                result: undefined
+            });
+        },
         processFile: () => {
             app.removeOthersSheets();
             var worksheet = app.workbook.getWorksheet($scope.selectedCompany.name);
-
 
             worksheet.getCell('C12').value = $scope.selectedClient.name;
             worksheet.getCell('C13').value = $scope.selectedClient.address;
@@ -174,22 +178,32 @@ function appController($scope) {
                 let serialNoCol = 'B',
                     descCol = 'R',
                     qtyCol = 'H',
-                    rateCol = 'I';
+                    rateCol = 'I',
+                    amountCol = 'S';
 
                 worksheet.getCell(serialNoCol + rowNo).value = index + 1;
                 worksheet.getCell(descCol + rowNo).value = item.desc;
                 worksheet.getCell(qtyCol + rowNo).value = item.qty;
                 worksheet.getCell(rateCol + rowNo).value = item.rate;
 
-                worksheet.getCell('S' + rowNo).value = worksheet.getCell('S' + rowNo).value;
+                app.updateCellFormula(worksheet.getCell(amountCol + rowNo));
                 rowNo += 2;
+            });
+
+            // triggering auto-calculate in formula cells
+            let formulaCells = ['S42', 'S43', 'S44', 'S45', 'S46', 'J48', 'J49', 'K48', 'K49'];
+            formulaCells.forEach((cellNo) => {
+                app.updateCellFormula(worksheet.getCell(cellNo));
             });
 
             let grandTotal = $scope.getGrandTotal(),
                 grandTotalInWords = utils.spellNumber(grandTotal).toUpperCase();
             worksheet.getCell('C48').value = grandTotalInWords;
-
-            console.log(grandTotalInWords);
+            
+            //set print area
+            worksheet.pageSetup.fitToPage = true;
+            worksheet.pageSetup.printArea = 'A1:K58';
+            console.log(worksheet.pageSetup);
         },
         readFile: () => {
             app.workbook = new Excel.Workbook();

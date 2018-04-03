@@ -81,10 +81,10 @@
         "appId": "com.electron.geibiller",
         "productName": "GEI Biller",
         "asar": true,
+        "asarUnpack": ["src/res/bill-template.xlsx"],
         "win": {
             "target": "nsis"
         },
-        "nsis": {
-        }
+        "nsis": {}
     }
 }

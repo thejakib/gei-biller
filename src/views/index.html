@@ -134,7 +134,7 @@
                 </li>
                 <li class="item flex-row" ng-repeat="item in items track by $index">
                     <span class="vertical-center">{{$index+1}}</span>
-                    <span class="vertical-center"> <textarea ng-model="item.desc" rows="1" class="mousetrap"></textarea> </span>
+                    <span class="vertical-center"> <textarea ng-model="item.desc" rows="1" class="mousetrap" msd-elastic></textarea> </span>
                     <span class="vertical-center"> <input type="number" ng-model="item.qty" class="mousetrap"/></span>
                     <span class="vertical-center"> <input type="number" ng-model="item.rate" class="mousetrap"/> </span>
                     <span class="vertical-center">{{format(item.qty * item.rate)}}</span>
@@ -170,7 +170,7 @@
                     <span class="value">{{format(getTotalAfterTax())}}</span>
                 </div>
                 <div class="flex-row">
-                    <span class="label">Reduce </span>
+                    <span class="label">Round Off </span>
                     <span class="value">{{format(getReduce())}}</span>
                 </div>
                 <div class="flex-row">
