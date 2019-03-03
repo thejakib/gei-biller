@@ -8,7 +8,8 @@
         "start": "start gulp && electron-forge start",
         "package": "electron-forge package",
         "make": "electron-forge make",
-        "lint": "eslint src"
+        "lint": "eslint src",
+        "dist": "electron-builder"
     },
     "keywords": [],
     "author": "Joe",
@@ -17,7 +18,7 @@
         "forge": {
             "make_targets": {
                 "win32": [
-                    "squirrel"
+                    "nsis"
                 ],
                 "darwin": [
                     "zip"
@@ -46,17 +47,18 @@
         }
     },
     "dependencies": {
-        "electron-compile": "^6.4.1",
         "electron-settings": "^3.1.1",
         "exceljs": "^0.5.1",
         "jquery": "^3.1.0",
-        "mousetrap": "^1.6.1"
+        "mousetrap": "^1.6.1",
+        "node-sass": "^4.11.0"
     },
     "devDependencies": {
         "babel-plugin-transform-async-to-generator": "^6.24.1",
         "babel-preset-env": "^1.6.0",
         "babel-preset-react": "^6.24.1",
         "del": "2.2.2",
+        "electron-builder": "^20.38.5",
         "electron-forge": "^3.2.0",
         "electron-prebuilt-compile": "1.7.5",
         "eslint": "3",
@@ -81,7 +83,9 @@
         "appId": "com.electron.geibiller",
         "productName": "GEI Biller",
         "asar": true,
-        "asarUnpack": ["src/res/bill-template.xlsx"],
+        "asarUnpack": [
+            "src/res/bill-template.xlsx"
+        ],
         "win": {
             "target": "nsis"
         },

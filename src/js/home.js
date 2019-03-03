@@ -44,6 +44,13 @@ function appController($scope) {
             year = date.getFullYear() % 100,
             invoiceNo = "L/";
 
+        // if month is greater than march
+        if (date.getMonth() > 2) {
+            year = year;
+        } else {
+            year = year - 1;
+        }
+
         invoiceNo += company.lastBillNo + "/";
         invoiceNo += year + "-" + (year + 1);
         return invoiceNo;
