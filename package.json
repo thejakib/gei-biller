@@ -1,15 +1,19 @@
 {
     "name": "gei-bill-app",
     "productName": "gei-bill-app",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "My Electron application description",
     "main": "src/index.js",
     "scripts": {
+        "g": "gulp",
+        "e": "electron .",
         "start": "start gulp && electron-forge start",
         "package": "electron-forge package",
         "make": "electron-forge make",
         "lint": "eslint src",
-        "dist": "electron-builder"
+        "dist": "electron-builder -w",
+        "build-scss": "node-sass css/scss --output css/scss",
+        "watch-scss": "node-sass --watch css/scss --output css/scss"
     },
     "keywords": [],
     "author": "Joe",
@@ -48,36 +52,14 @@
     },
     "dependencies": {
         "electron-settings": "^3.1.1",
-        "exceljs": "^0.5.1",
+        "exceljs": "^1.12.1",
         "jquery": "^3.1.0",
-        "mousetrap": "^1.6.1",
-        "node-sass": "^4.11.0"
+        "mousetrap": "^1.6.1"
     },
     "devDependencies": {
-        "babel-plugin-transform-async-to-generator": "^6.24.1",
-        "babel-preset-env": "^1.6.0",
-        "babel-preset-react": "^6.24.1",
-        "del": "2.2.2",
+        "electron": "^5.0.2",
         "electron-builder": "^20.38.5",
-        "electron-forge": "^3.2.0",
-        "electron-prebuilt-compile": "1.7.5",
-        "eslint": "3",
-        "eslint-config-airbnb": "15",
-        "eslint-plugin-import": "2",
-        "eslint-plugin-jsx-a11y": "5",
-        "eslint-plugin-react": "7",
-        "gulp": "^3.9.1",
-        "gulp-autoprefixer": "3.1.1",
-        "gulp-clean": "^0.3.2",
-        "gulp-istanbul": "^1.1.1",
-        "gulp-load-plugins": "^1.3.0",
-        "gulp-notify": "^2.2.0",
-        "gulp-plumber": "^1.1.0",
-        "gulp-rename": "^1.2.2",
-        "gulp-sass": "^2.3.2",
-        "gulp-sourcemaps": "^1.6.0",
-        "gulp-util": "^3.0.7",
-        "gulp-wiredep": "^1.2.0"
+        "node-sass": "^4.12.0"
     },
     "build": {
         "appId": "com.electron.geibiller",
